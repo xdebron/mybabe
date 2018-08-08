@@ -48,47 +48,47 @@ for($j=0;$j<300000;$j++)
 //Anything below this line are belong to mybb captcha.php
 function create_captcha($folder)
 {
+    global $img_width, $img_height;
     $im = imagecreatetruecolor($img_width, $img_height);
 
 
-        // Fill the background with white
-        $bg_color = imagecolorallocate($im, 255, 255, 255);
-        imagefill($im, 0, 0, $bg_color);
+    // Fill the background with white
+    $bg_color = imagecolorallocate($im, 255, 255, 255);
+    imagefill($im, 0, 0, $bg_color);
 
-        // Draw random circles, squares or lines?
-        $to_draw = mt_rand(0, 2);
-        if($to_draw == 1)
-        {
-            draw_circles($im);
-        }
-        else if($to_draw == 2)
-        {
-            draw_squares($im);
-        }
-        else
-        {
-            draw_lines($im);
-        }
+    // Draw random circles, squares or lines?
+    $to_draw = mt_rand(0, 2);
+    if($to_draw == 1)
+    {
+        draw_circles($im);
+    }
+    else if($to_draw == 2)
+    {
+        draw_squares($im);
+    }
+    else
+    {
+        draw_lines($im);
+    }
 
-        // Draw dots on the image
-        draw_dots($im);
+    // Draw dots on the image
+    draw_dots($im);
 
-        // Write the image string to the image
-        $filename = draw_string($im, generateRandomString(5));
-        //echo $filename;
+    // Write the image string to the image
+    $filename = draw_string($im, generateRandomString(5));
+    //echo $filename;
 
-        // Draw a nice border around the image
-        $border_color = imagecolorallocate($im, 0, 0, 0);
-        imagerectangle($im, 0, 0, $img_width-1, $img_height-1, $border_color);
+    // Draw a nice border around the image
+    $border_color = imagecolorallocate($im, 0, 0, 0);
+    imagerectangle($im, 0, 0, $img_width-1, $img_height-1, $border_color);
 
-        // Output the image
-        //header("Content-type: image/png");
-        ob_start();
-        imagepng($im);
-        $imagedata = ob_get_contents();
-        ob_end_clean();
-        file_put_contents("dataset/".$folder."/".$filename."_".md5($imagedata).".png", $imagedata);
-        imagedestroy($im);
+    // Output the image
+    ob_start();
+    imagepng($im);
+    $imagedata = ob_get_contents();
+    ob_end_clean();
+    file_put_contents("dataset/".$folder."/".$filename."_".md5($imagedata).".png", $imagedata);
+    imagedestroy($im);
 }
 function draw_lines(&$im)
 {
