@@ -11,9 +11,9 @@ I've uploaded two images dataset folder so that you can understand more better t
 
 ### Dependencies
 
-Tensorflow(I have tried it with 1.9.0)
-OpenCV
-Python 3
+* Tensorflow(I have tried it with 1.9.0)
+* OpenCV
+* Python 3
 
 ### Creating dataset
 
