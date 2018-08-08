@@ -7,7 +7,7 @@ MyBB CAPTCHA Solver using Conventional Neural Network in Keras
 
 ## Getting Started
 
-I've uploaded two images dataset folder so that you can understand more better the structure and file naming scheme.
+I've uploaded two images in dataset folder so that you can understand more better the structure and file naming scheme.
 
 ### Dependencies
 
