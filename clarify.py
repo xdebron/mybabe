@@ -4,14 +4,11 @@ import numpy as np
 
 class clarify():
 
-    def __init__(self, path=None, img=None, gray=None):
+    def __init__(self, path=None, img=None):
         # open file into image array or use image itself
         if img is None:
             if path is not None:
-                if gray is not None:
-                    self.img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
-                else:
-                    self.img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+                self.img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
             else:
                 raise Exception('You have to provide a path or image itself.')
         else:
@@ -22,35 +19,26 @@ class clarify():
     # anything above 200 is noise.
     # also completely black pixels in edges must filtered
     def clarify_img(self):
-        (h, w) = self.img.shape[:2]
-        for x in range(0, w):
-            for y in range(0, h):
-                if max(self.img[y][x]) > 200 or sum(self.img[y][x]) == 0:
-                    self.img[y][x] = [255, 255, 255]
-
-    # canny image, threshold values may need some tweak
-    def canny(self):
-        self.img = cv2.Canny(self.img, 400, 500)
+        self.img[np.logical_or(np.max(self.img, axis=2)>200, np.sum(self.img, axis=2)==0)] = [255, 255, 255]
 
     # RGB to GRAY
     def gray(self):
         self.img = cv2.cvtColor(self.img, cv2.COLOR_RGB2GRAY)
 
+    def resize(self, size):
+        self.img = cv2.resize(self.img, size)
     # clear and gray
     def clarify_and_gray(self):
         self.clarify_img()
+        self.resize((48, 48))
         self.gray()
-
-    # clear and canny
-    def clarify_and_canny(self):
-        self.clarify_img()
-        self.canny()
-
 
 if __name__ == "__main__":
     clr = clarify(path="test.png")
-    clr.clarify_and_canny()
+    clr.clarify_img()
+    clr.gray()
     img = clr.img
+    cv2.imwrite("test_clarified.png", img)
     cv2.imshow('clarified', img)
 
     cv2.waitKey(0)
