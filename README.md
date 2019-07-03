@@ -2,12 +2,15 @@
 MyBB CAPTCHA Solver using Conventional Neural Network in Keras
 
 Original Image:
+
 ![tested image](https://raw.githubusercontent.com/xdebron/mybabe/master/test.png)
 
 After Preprocess:
+
 ![tested image](https://raw.githubusercontent.com/xdebron/mybabe/master/test_clarified.png)
 
 Guessed:
+
 ![output](https://raw.githubusercontent.com/xdebron/mybabe/master/output.png)
 
 ## Getting Started
