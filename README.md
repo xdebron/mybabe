@@ -56,3 +56,9 @@ Evaluates test.png. Outputs like this:
 {'h': 0.95185363, '4': 0.3711427, '5': 0.8917278, 'w': 0.98471284, 'l': 0.86197835}
 h45wl
 ```
+
+### Accuracy
+
+![accuracy](https://raw.githubusercontent.com/xdebron/mybabe/master/scalars.png)
+
+Training process took about 8 hours with gtx1060.
