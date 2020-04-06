@@ -1,5 +1,5 @@
 # MyBaBe
-MyBB CAPTCHA Solver using Conventional Neural Network in Keras
+MyBB CAPTCHA Solver using Convolutional Neural Network in Keras
 
 Original Image:
 
