@@ -48,7 +48,8 @@ for($j=0;$j<300000;$j++)
 //Anything below this line are belong to mybb captcha.php
 function create_captcha($folder)
 {
-    $im = imagecreatetruecolor($img_width, $img_height);
+	global $img_width, $img_height;
+        $im = imagecreatetruecolor($img_width, $img_height);
 
 
         // Fill the background with white
